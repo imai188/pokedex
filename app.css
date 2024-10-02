@@ -1,0 +1,168 @@
+body {
+    background-color: rgba(251, 203, 226, 0.935);
+    /* margin: 0; */
+    font-family: "DotGothic16", sans-serif;
+    font-weight: 600;
+    color: rgba(252, 76, 161, 0.935);
+}
+
+.card {
+    background: linear-gradient(145deg, rgba(248, 41, 141, 0.9), rgba(248, 41, 141, 0.6));
+    list-style: none;
+    padding: 55px;
+    color: rgba(248, 243, 247, 0.875);
+    text-align: center;
+    border-radius: 15px; 
+}
+
+.card:hover {
+    animation: bounce 0.5s linear;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    20% {
+        transform: translateY(-8px);
+    }
+    40% {
+        transform: translateY(0px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+    80% {
+        transform: translateY(-0px);
+    }
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.card-subtitle {
+    font-weight: lighter;
+    margin-top: 5px;
+}
+
+.card-image {
+    height: 180px;
+}
+
+#pokedex {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+}
+
+.container {
+    padding: 40px;
+    margin: 0 auto;
+}
+
+h1 {
+    /* text-transform: uppercase; */
+    text-align: center;
+    font-size: 65px;
+    font-weight: 1000;
+    letter-spacing: 0.4em;
+    text-shadow: 1px 1px 0px #fff,
+    4px 4px 0px #ccc, 
+    3px 3px 5px rgba(0, 0, 0, 0.8); 
+    margin-top: 10px;
+}
+
+.icon {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 3em;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(251, 203, 226, 0.935);
+    opacity: 0.93;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-text {
+    font-size: 13px;
+    margin: 0; 
+    padding: 0;
+    color: yellow; 
+}
+
+.popup-text-2 {
+    font-size: 20px; 
+    margin: 0; 
+    padding: 0;
+    color: yellow; 
+}
+
+#closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+button {
+    background-color: rgba(248, 41, 141, 0.93); 
+    padding: 20px 30px; /* サイズ大きくする */
+    color: rgba(248, 243, 247, 0.8);
+    border-radius: 10px;
+    transition: transform 100ms;
+    font-family: "DotGothic16";
+    font-size: 23px;
+    font-weight: bolder;
+    border: none;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+    background: linear-gradient(145deg, rgba(248, 41, 141, 0.9), rgba(248, 41, 141, 0.7));
+    transform: translateY(0);
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px); /* 浮かせる */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1); 
+}
+
+#favoritePokemon {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 複数行にする */
+}
+
+.favorite-image {
+    width: 130px; 
+    height: 140px;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+
+    .icon {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .favorite-image {
+        width: 100px;
+        height: 100px;
+    }
+}
