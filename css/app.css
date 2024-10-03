@@ -81,6 +81,10 @@ h1 {
     font-size: 3em;
 }
 
+.icon::before {
+    content: "◓";
+}
+
 .popup {
     position: fixed;
     top: 0;
