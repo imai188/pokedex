@@ -49,8 +49,12 @@ const selectPokemon = async (id) => {
 
         const pokeman = await res.json();
         displayPopup(pokeman); //ポップアップでポケモン詳細表示
+
         setTimeout(() => {
+            const popupContainer = document.querySelector('.popup');
+            if (popupContainer) {
             displayFavoritePokemonImage(favoritePokemon.find(p => p.name === "Dedenne"));
+            }
         }, 3000);
     } catch (error) { //発生したエラーに関する情報を受け取り処理する
         console.error("An error happened.:", error);
@@ -100,14 +104,15 @@ const displayFavoritePokemon = () => {
 };
 //デデンネをポップアップで表示する関数
 const displayFavoritePokemonImage = (pokeman) => {
+    const isDedenne = pokeman.name === "Dedenne" ? "dedenne-card" : "";
     const htmlString = `
         <div class="popup">
-            <button id="closeBtn" onclick="closePopup()">CLOSE</button>
-            <div class="card">
+            <button id="closeBtn" class="halloween-button" onclick="closePopup()">CLOSE</button>
+            <div class="card ${isDedenne}">
                 <div class="popup-text-2">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div>
-                <div class="popup-text">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div> 
+                <div class="popup-text">🎃🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🎃</div> 
                 <img class="card-image" src="${pokeman.image}" />
-                <div class="popup-text">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div> 
+                <div class="popup-text">🎃🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🍬🍭🎃</div> 
                 <div class="popup-text-2">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div>
             </div>
         </div>

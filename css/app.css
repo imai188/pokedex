@@ -1,6 +1,5 @@
 body {
     background-color: rgba(251, 203, 226, 0.935);
-    /* margin: 0; */
     font-family: "DotGothic16", sans-serif;
     font-weight: 600;
     color: rgba(252, 76, 161, 0.935);
@@ -13,6 +12,22 @@ body {
     color: rgba(248, 243, 247, 0.875);
     text-align: center;
     border-radius: 15px; 
+    list-style: none;
+    padding: 55px;
+    color: rgba(248, 243, 247, 0.875);
+    text-align: center;
+    border-radius: 15px; 
+}
+
+.dedenne-card {
+    background: radial-gradient(
+        circle,
+        rgb(77, 77, 234),   
+        rgba(115, 78, 226, 0.9), 
+        rgba(75, 0, 130, 0.7), 
+        rgba(70, 70, 255, 0.852)  
+    );
+    background-size: 200% 200%; 
 }
 
 .card:hover {
@@ -64,7 +79,6 @@ body {
 }
 
 h1 {
-    /* text-transform: uppercase; */
     text-align: center;
     font-size: 65px;
     font-weight: 1000;
@@ -98,6 +112,18 @@ h1 {
     align-items: center;
 }
 
+.popup-2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(251, 203, 226, 0.935);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .popup-text {
     font-size: 13px;
     margin: 0; 
@@ -120,7 +146,7 @@ h1 {
 
 button {
     background-color: rgba(248, 41, 141, 0.93); 
-    padding: 20px 30px; /* サイズ大きくする */
+    padding: 20px 30px; 
     color: rgba(248, 243, 247, 0.8);
     border-radius: 10px;
     transition: transform 100ms;
@@ -135,14 +161,39 @@ button {
 
 button:hover {
     cursor: pointer;
-    transform: translateY(-2px); /* 浮かせる */
+    transform: translateY(-2px); 
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.halloween-button {
+    font-family: 'Creepster', cursive; 
+    background: linear-gradient(to right, 
+        rgb(77, 77, 234),   
+        rgba(115, 78, 226, 0.9), 
+        rgba(75, 0, 130, 0.7), 
+        rgba(70, 70, 255, 0.852)); 
+    color: rgb(223, 247, 38); 
+    font-size: 30px; 
+    text-shadow: 5px 5px 5px rgb(242, 40, 40); 
+    padding: 30px 40px; 
+    border: none;
+    cursor: pointer; 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 0; 
+    transition: transform 0.3s; 
+    clip-path: polygon(30% 10%, 10% 10%, 0% 100%, 10% 90%, 90% 100%, 100% 90%, 100% 10%, 90% 20%);
+}
+
+.halloween-button:hover {
+    transform: scale(1.2) rotate(-4deg);
+    font-size: 35px;  
 }
 
 #favoritePokemon {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* 複数行にする */
+    flex-wrap: wrap; 
 }
 
 .favorite-image {
@@ -170,3 +221,5 @@ button:hover {
         height: 100px;
     }
 }
+
+
