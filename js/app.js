@@ -1,4 +1,6 @@
 const pokedex = document.getElementById("pokedex");
+const pokeCache = {};
+
 // ポケモンAPIからデータを取得
 const fetchPokemon = async() => {
     try {
@@ -40,16 +42,19 @@ const displayPokemon = (pokemon) => {
 //ポケモン詳細を取得し表示
 const selectPokemon = async (id) => {
     try {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-        const res = await fetch(url); 
-
-        if (!res.ok) {
-            throw new Error(`Failed to get Pokémon information.: ${res.status} ${res.statusText}`);
+        if(!pokeCache[id]) {//キャッシュにデータがない場合のみ
+            const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+            const res = await fetch(url); 
+            if (!res.ok) {
+                throw new Error(`Failed to get Pokémon information.: ${res.status} ${res.statusText}`);
+            }
+            const pokeman = await res.json();
+            pokeCache[id] = pokeman;//キャッシュに保存
+            // displayPopup(pokeman); //ポップアップでポケモン詳細表示
         }
+        displayPopup(pokeCache[id]);//キャッシュにデータがあれば表示
 
-        const pokeman = await res.json();
-        displayPopup(pokeman); //ポップアップでポケモン詳細表示
-
+        // 3秒後にデデンネを表示する
         setTimeout(() => {
             const popupContainer = document.querySelector('.popup');
             if (popupContainer) {
@@ -69,7 +74,7 @@ const displayPopup = (pokeman) => {
         <div class= "popup">
             <button id="closeBtn" onclick="closePopup()">CLOSE</button>
             <div class="card"> 
-                <img class="card-image" src="${image}"/>
+                <img class="card-image" src="${image}"onload="showPopupContent(this)"/>
                 <h2 class="card-title">${pokeman.id}. ${pokeman.name}</h2>
                 <p><small>Height: </small>${pokeman.height} | <small>Weight: </small>${pokeman.weight} | <small>Type: </small>${type}</p>
             </div>
@@ -77,13 +82,20 @@ const displayPopup = (pokeman) => {
     `;
 
     pokedex.innerHTML = htmlString + pokedex.innerHTML;
-    console.log(htmlString);
 };
+
+// ポップアップのコンテンツを表示する関数
+function showPopupContent(img) {
+    const card = img.parentElement;
+    card.querySelectorAll('h2, p').forEach(el => el.style.display = 'block');
+};
+
 //ポップアップ閉じる関数
 const closePopup = () => {
     const popup = document.querySelector('.popup');
     popup.parentElement.removeChild(popup);
-}
+};
+
 //5匹のポケモンデータ表示する関数
 const favoritePokemon = [
     { name: "Tinkaton", id: 957, image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/957.png" },
@@ -92,6 +104,7 @@ const favoritePokemon = [
     { name: "Togepi", id: 175, image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/175.png" },
     { name: "Pikachu", id: 25, image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" }
 ];
+
 //ポケモンを表示する関数
 const displayFavoritePokemon = () => {
     const favoritePokemonContainer = document.getElementById("favoritePokemon");
@@ -102,11 +115,12 @@ const displayFavoritePokemon = () => {
     `).join('');
     favoritePokemonContainer.innerHTML = favoriteHTMLString;
 };
+
 //デデンネをポップアップで表示する関数
 const displayFavoritePokemonImage = (pokeman) => {
     const isDedenne = pokeman.name === "Dedenne" ? "dedenne-card" : "";
     const htmlString = `
-        <div class="popup">
+        <div class="popup dark-mode">
             <button id="closeBtn" class="halloween-button" onclick="closePopup()">CLOSE</button>
             <div class="card ${isDedenne}">
                 <div class="popup-text-2">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div>
@@ -125,7 +139,6 @@ const displayFavoritePokemonImage = (pokeman) => {
     pokedex.innerHTML = htmlString + pokedex.innerHTML;
 
 };
-
 
 displayFavoritePokemon();
 fetchPokemon();

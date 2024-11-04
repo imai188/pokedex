@@ -20,15 +20,23 @@ body {
 }
 
 .dedenne-card {
-    background: radial-gradient(
-        circle,
-        rgb(77, 77, 234),   
-        rgba(115, 78, 226, 0.9), 
-        rgba(75, 0, 130, 0.7), 
-        rgba(70, 70, 255, 0.852)  
+    background: linear-gradient(to right,
+    rgba(57, 61, 248, 0.9), 
+    rgba(78, 100, 226, 0.9),
+    rgba(108, 91, 255, 0.7), 
+    rgba(145, 59, 249, 0.9) 
     );
-    background-size: 200% 200%; 
 }
+
+.dedenne-card:hover {
+    background: linear-gradient(to right,
+    rgba(145, 59, 249, 0.9), 
+    rgba(108, 91, 255, 0.7), 
+    rgba(78, 100, 226, 0.9),
+    rgba(57, 61, 248, 0.9)
+); 
+}
+    /* rgb(77, 77, 234)   */
 
 .card:hover {
     animation: bounce 0.5s linear;
@@ -168,13 +176,15 @@ button:hover {
 .halloween-button {
     font-family: 'Creepster', cursive; 
     background: linear-gradient(to right, 
-        rgb(77, 77, 234),   
-        rgba(115, 78, 226, 0.9), 
-        rgba(75, 0, 130, 0.7), 
-        rgba(70, 70, 255, 0.852)); 
-    color: rgb(223, 247, 38); 
-    font-size: 30px; 
-    text-shadow: 5px 5px 5px rgb(242, 40, 40); 
+        rgb(90, 90, 250),   
+        rgba(71, 68, 243, 0.9), 
+        rgba(41, 238, 192, 0.8), 
+        rgba(145, 59, 249, 0.9)); 
+    color: rgb(188, 247, 38); 
+    /* color: rgb(11, 250, 115);  */
+    text-shadow: 20px 5px 5px rgba(33, 1, 1, 0.512);  
+    font-size: 40px; 
+    /* text-shadow: 20px 5px 5px rgb(195, 3, 169);  */
     padding: 30px 40px; 
     border: none;
     cursor: pointer; 
@@ -186,8 +196,22 @@ button:hover {
 }
 
 .halloween-button:hover {
-    transform: scale(1.2) rotate(-4deg);
-    font-size: 35px;  
+    transform: scale(1.2) rotate(-8deg);
+    font-size: 46px; 
+    color: rgba(161, 250, 164, 0.918); 
+    text-shadow:
+    20px 5px 5px rgba(33, 1, 1, 0.512),
+    10px 2px 2px rgba(195, 3, 3, 0.8),
+    -10px -3px 3px rgba(139, 0, 0, 0.7),
+    4px -2px 3px rgba(165, 42, 42, 0.6),
+    4px -6px 4px rgba(255, 0, 0, 0.7),
+    -10px 5px 4px rgba(195, 3, 3, 0.9),
+    15px 3px 3px rgba(139, 0, 0, 0.7),
+    -18px -7px 5px rgba(255, 0, 0, 0.5);
+}
+
+.dark-mode {
+    background: linear-gradient(135deg, #3e005c, #1a002a 40%, #4d0000 90%);
 }
 
 #favoritePokemon {
